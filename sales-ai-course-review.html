@@ -160,7 +160,7 @@
         }
 
         .dropdown-menu {
-            margin-top: 0.5rem;
+            margin-top: 0; /* Fixed hover gap */ /* Fixed hover gap */
             padding-left: 1rem;
             border-left: 2px solid var(--border);
             display: flex;
@@ -338,12 +338,12 @@
                 left: 50%;
                 transform: translateX(-50%);
                 background-color: var(--bg-surface);
-                min-width: 240px; margin-top: 0;
+                min-width: 240px; margin-top: 0; /* Fixed hover gap */
                 box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
                 border: 1px solid var(--border);
                 border-radius: 8px;
                 padding: 0;
-                margin-top: 0.75rem;
+                margin-top: 0; /* Fixed hover gap */ /* Fixed hover gap */
             }
             .dropdown:hover .dropdown-menu {
                 display: flex;
