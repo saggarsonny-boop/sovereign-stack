@@ -159,9 +159,11 @@
         } else {
             // Fallback if no valid offer specified
             document.getElementById('status-title').textContent = "Audit Record Not Found";
-            document.getElementById('status-desc').textContent = "We could not find a registered redirect key for this query.";
+            document.getElementById('status-desc').textContent = "Redirecting you back to the Sovereign System homepage...";
             document.getElementById('fallback-link').href = "index.html";
-            document.getElementById('fallback-link').textContent = "Return to Sovereign System Homepage";
+            setTimeout(function() {
+                window.location.replace("index.html");
+            }, 3000);
         }
     </script>
 
