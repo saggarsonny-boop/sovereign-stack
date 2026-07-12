@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Stack | Independent Systems Research & Reviews</title>
+    <meta name="description" content="Independent, data-driven systems research and comparison reviews for Enterprise Infrastructure, Legal & Compliance, and Clinical Systems.">
+    
+    <!-- SEO / GEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://system.hive.baby/">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data (JSON-LD) for Reviews & Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Sovereign Stack",
+      "url": "https://system.hive.baby/",
+      "description": "Independent systems research and software comparison guides.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sovereign Stack",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://system.hive.baby/assets/logo.png"
+        }
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Featured Systems Comparisons",
+      "description": "Expert comparison reviews for high-ticket software systems.",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Review",
+            "name": "Monday.com vs ClickUp Comparison Guide",
+            "itemReviewed": {
+              "@type": "SoftwareApplication",
+              "name": "Project Management Systems"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Sovereign Stack"
+            },
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "4.8",
+              "bestRating": "5"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Review",
+            "name": "ZenBusiness vs Northwest LLC Formation Review",
+            "itemReviewed": {
+              "@type": "GovernmentService",
+              "name": "Legal Formation & Compliance Systems"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Sovereign Stack"
+            },
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "4.9",
+              "bestRating": "5"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Review",
+            "name": "WP Engine vs Kinsta Managed WordPress Review",
+            "itemReviewed": {
+              "@type": "SoftwareApplication",
+              "name": "Managed Hosting Infrastructure"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Sovereign Stack"
+            },
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "4.7",
+              "bestRating": "5"
+            }
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-base: #0a0b10;
+            --bg-surface: #12131a;
+            --bg-surface-hover: #1b1c26;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --border: #27273a;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 11, 16, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 5rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.05em;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 0 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: #a5b4fc;
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 400;
+        }
+
+        /* Sectors / Verticals */
+        .sectors {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            background-color: var(--bg-surface-hover);
+        }
+
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Featured Reviews / Comparisons */
+        .reviews {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+            background: linear-gradient(180deg, var(--bg-base) 0%, rgba(18, 19, 26, 0.5) 100%);
+        }
+
+        .review-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .review-badge {
+            background-color: rgba(99, 102, 241, 0.1);
+            color: #a5b4fc;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            align-self: flex-start;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .review-body {
+            padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-body h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .review-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .rating-star {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        /* Affiliate Link / Action */
+        .affiliate-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border: 1px dashed var(--border);
+        }
+
+        .affiliate-link span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .affiliate-link a {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .affiliate-link a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Footer & Disclosure */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 4rem 0;
+            background-color: #07080b;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        .disclosure {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.75rem;
+            }
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 1.5rem 0;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">Sovereign Stack</a>
+            <nav>
+                <ul>
+                    <li><a href="#sectors">Sectors</a></li>
+                    <li><a href="#reviews">Featured Comparisons</a></li>
+                    <li><a href="#about">Research Method</a></li>
+                </ul>
+            </nav>
+            <a href="#reviews" class="btn">View Reviews</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <span class="tagline">Independent Systems Research</span>
+            <h1>Architecting Sovereign Systems</h1>
+            <p class="hero-desc">We conduct independent audits, architecture diagrams, and objective comparison analyses of modern software systems to help enterprises build resilient stacks.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+                <a href="#reviews" class="btn">Explore Guides</a>
+                <a href="#sectors" style="border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 6px; font-weight:600; font-size: 0.9rem; background: transparent;" class="btn-secondary">Core Verticals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Sectors/Verticals -->
+    <section class="sectors" id="sectors">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Architecture Verticals</h2>
+                <p>We catalog and research platforms across three main domains crucial for secure, compliant operations.</p>
+            </div>
+            <div class="grid-3">
+                <!-- Vertical 1 -->
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Enterprise Infrastructure</h3>
+                    <p>Auditing hosting clusters, cloud networks, content delivery platforms, and high-performance server configurations for data sovereignty.</p>
+                </div>
+                <!-- Vertical 2 -->
+                <div class="card">
+                    <div class="card-icon">⚖️</div>
+                    <h3>Legal & Compliance</h3>
+                    <p>Evaluating LLC formation systems, corporate compliance networks, agent registries, and automated business governance platforms.</p>
+                </div>
+                <!-- Vertical 3 -->
+                <div class="card">
+                    <div class="card-icon">🏥</div>
+                    <h3>Clinical Systems</h3>
+                    <p>Analyzing healthcare databases, scheduling workflows, HIPAA-compliant communication tools, and patient administration software.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Reviews / Comparisons -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Comparison Guides</h2>
+                <p>Objective, technical breakdowns of competing software suites with clear performance benchmarks.</p>
+            </div>
+            <div class="grid-3">
+                <!-- Guide 1 -->
+                <article class="review-card">
+                    <div class="review-body">
+                        <span class="review-badge">Enterprise Infra</span>
+                        <h3>Monday.com vs ClickUp</h3>
+                        <p>A comprehensive systems evaluation comparing workflow automation throughput, API response latency, and database scalability for large-scale operations.</p>
+                        <div class="affiliate-link">
+                            <span>Sovereign Choice: <strong>Monday</strong></span>
+                            <a href="monday-vs-clickup.html">Analyze Stack →</a>
+                        </div>
+                        <div class="review-meta">
+                            <span>Score: <strong class="rating-star">★ 4.8</strong>/5</span>
+                            <span>Updated: July 2026</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Guide 2 -->
+                <article class="review-card">
+                    <div class="review-body">
+                        <span class="review-badge">Legal & Compliance</span>
+                        <h3>ZenBusiness vs Northwest Registered Agent</h3>
+                        <p>Examining processing turnarounds, hidden platform pricing, compliance calendar accuracy, and registered agent privacy protections.</p>
+                        <div class="affiliate-link">
+                            <span>Sovereign Choice: <strong>Northwest</strong></span>
+                            <a href="zenbusiness-vs-northwest.html">Analyze Stack →</a>
+                        </div>
+                        <div class="review-meta">
+                            <span>Score: <strong class="rating-star">★ 4.9</strong>/5</span>
+                            <span>Updated: July 2026</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Guide 3 -->
+                <article class="review-card">
+                    <div class="review-body">
+                        <span class="review-badge">Clinical Infrastructure</span>
+                        <h3>WP Engine vs Kinsta</h3>
+                        <p>Stress-testing server response under heavy loads, caching engine efficiency, database optimization tools, and automated backup reliability.</p>
+                        <div class="affiliate-link">
+                            <span>Sovereign Choice: <strong>Kinsta</strong></span>
+                            <a href="wpengine-vs-kinsta.html">Analyze Stack →</a>
+                        </div>
+                        <div class="review-meta">
+                            <span>Score: <strong class="rating-star">★ 4.7</strong>/5</span>
+                            <span>Updated: July 2026</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-inner">
+            <a href="#" class="logo">Sovereign Stack</a>
+            
+            <p class="disclosure">
+                <strong>Affiliate Disclosure:</strong> Sovereign Stack is an independent, professional review platform. We run technical audits on tools and services and may receive referral commissions when you click or purchase through our links. This financial support enables us to fund deep technical research, custom server benchmarks, and detailed review guides without relying on intrusive advertising or paywalls. All review opinions remain strictly objective and independent.
+            </p>
+
+            <div class="footer-links">
+                <a href="#about">About Our Research</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+
+            <p class="copyright">&copy; 2026 Sovereign Stack. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
