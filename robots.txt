@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://system.hive.baby/sitemap.xml
+X-Robots-Tag: all
+X-LLMS-Txt: https://system.hive.baby/llms.txt
