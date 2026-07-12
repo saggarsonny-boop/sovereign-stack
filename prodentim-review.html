@@ -586,7 +586,7 @@
             <div class="cta-box">
                 <h3>Optimize Oral Clinical Systems</h3>
                 <p>Deploy the ProDentim oral probiotic system with third-party certified colony counts.</p>
-                <a href="https://e84039vqqh7gxcvmxmkbzime7i.hop.clickbank.net" target="_blank" rel="nofollow noopener" class="btn">Deploy ProDentim →</a>
+                <a href="recommends.html?offer=prodentim" target="_blank" rel="nofollow noopener" class="btn">Deploy ProDentim →</a>
             </div>
 
             <button class="cite-btn" onclick="copyCitation('prodentim-review.html')">
@@ -612,7 +612,7 @@
         </div>
     </footer>
 
-    <!-- Mobile Navigation Toggle Script -->
+        <!-- Mobile Navigation Toggle Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var menuToggle = document.getElementById('menuToggle');
@@ -620,15 +620,22 @@
             var dropdownTrigger = document.getElementById('dropdownTrigger');
             var dropdownMenu = document.getElementById('dropdownMenu');
 
+            // Helper to check if we are on a mobile screen
+            function isMobile() {
+                return window.innerWidth < 768;
+            }
+
             // Toggle Mobile Drawer
             menuToggle.addEventListener('click', function(e) {
+                if (!isMobile()) return;
                 e.stopPropagation();
                 navbar.classList.toggle('open');
                 menuToggle.textContent = navbar.classList.contains('open') ? '✕' : '☰';
             });
 
-            // Toggle Dropdown inside Drawer
+            // Toggle Dropdown inside Drawer (mobile only)
             dropdownTrigger.addEventListener('click', function(e) {
+                if (!isMobile()) return; // Let CSS hover handle desktop
                 e.preventDefault();
                 e.stopPropagation();
                 var isDisplayed = dropdownMenu.style.display === 'flex';
@@ -637,9 +644,20 @@
 
             // Close menu if clicking outside
             document.addEventListener('click', function(e) {
+                if (!isMobile()) return;
                 if (!navbar.contains(e.target) && !menuToggle.contains(e.target)) {
                     navbar.classList.remove('open');
                     menuToggle.textContent = '☰';
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+
+            // Reset inline styles on window resize
+            window.addEventListener('resize', function() {
+                if (!isMobile()) {
+                    navbar.classList.remove('open');
+                    menuToggle.textContent = '☰';
+                    dropdownMenu.style.removeAttribute('style'); // Clear mobile inline styles
                 }
             });
         });

@@ -903,7 +903,7 @@
         </div>
     </footer>
 
-    <!-- Mobile Navigation Toggle Script -->
+        <!-- Mobile Navigation Toggle Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var menuToggle = document.getElementById('menuToggle');
@@ -911,15 +911,22 @@
             var dropdownTrigger = document.getElementById('dropdownTrigger');
             var dropdownMenu = document.getElementById('dropdownMenu');
 
+            // Helper to check if we are on a mobile screen
+            function isMobile() {
+                return window.innerWidth < 768;
+            }
+
             // Toggle Mobile Drawer
             menuToggle.addEventListener('click', function(e) {
+                if (!isMobile()) return;
                 e.stopPropagation();
                 navbar.classList.toggle('open');
                 menuToggle.textContent = navbar.classList.contains('open') ? '✕' : '☰';
             });
 
-            // Toggle Dropdown inside Drawer
+            // Toggle Dropdown inside Drawer (mobile only)
             dropdownTrigger.addEventListener('click', function(e) {
+                if (!isMobile()) return; // Let CSS hover handle desktop
                 e.preventDefault();
                 e.stopPropagation();
                 var isDisplayed = dropdownMenu.style.display === 'flex';
@@ -928,58 +935,23 @@
 
             // Close menu if clicking outside
             document.addEventListener('click', function(e) {
+                if (!isMobile()) return;
                 if (!navbar.contains(e.target) && !menuToggle.contains(e.target)) {
                     navbar.classList.remove('open');
                     menuToggle.textContent = '☰';
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+
+            // Reset inline styles on window resize
+            window.addEventListener('resize', function() {
+                if (!isMobile()) {
+                    navbar.classList.remove('open');
+                    menuToggle.textContent = '☰';
+                    dropdownMenu.style.removeAttribute('style'); // Clear mobile inline styles
                 }
             });
         });
-    
-        // Interactive Configurator Logic
-        function showConfig(type) {
-            var resultBox = document.getElementById('configResult');
-            var title = document.getElementById('resultTitle');
-            var text = document.getElementById('resultText');
-            var link = document.getElementById('resultLink');
-            
-            // Set active states on buttons
-            var buttons = document.querySelectorAll('.config-opt-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            if (type === 'video') {
-                title.textContent = "Sovereign Stack: Sales AI Video Spokesperson Engine";
-                text.textContent = "Recommended workflow: Sales AI Course. Solves character generation pipelines, reducing production turnarounds from 7 days to 30 minutes with under $5 in render overhead.";
-                link.href = "sales-ai-course-review.html";
-            } else if (type === 'hosting') {
-                title.textContent = "Sovereign Stack: Containerized Server Infrastructure";
-                text.textContent = "Recommended infrastructure: Kinsta Managed Containers. Solves 'noisy neighbor' server degradation through isolated LXD virtualized environments on Google Premium Network.";
-                link.href = "wpengine-vs-kinsta.html";
-            } else if (type === 'compliance') {
-                title.textContent = "Sovereign Stack: Corporate Privacy Compliance";
-                text.textContent = "Recommended setup: Northwest Registered Agent. Protects personal residential addresses from public records directories with localized corporate guide hosting.";
-                link.href = "zenbusiness-vs-northwest.html";
-            } else if (type === 'clinical') {
-                title.textContent = "Sovereign Stack: Certified Health & Memory Logistics";
-                text.textContent = "Recommended protocol: Neuro Serge. High-potency standardized extract tracking verified under independent third-party certification databases.";
-                link.href = "neuro-serge-review.html";
-            }
-            
-            resultBox.style.display = 'block';
-        }
-
-        // Audit Request Submission Simulation
-        function submitRequest() {
-            var input = document.getElementById('requestInput');
-            if (!input.value.trim()) {
-                alert("Please enter a tool or product comparison to request.");
-                return;
-            }
-            // Display a clean success confirmation
-            alert("Thank you! Your audit request for '" + input.value + "' has been logged in our research queue.");
-            input.value = "";
-        }
-
-        </script>
+    </script>
 </body>
 </html>

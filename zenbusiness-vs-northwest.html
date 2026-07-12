@@ -583,7 +583,7 @@
             <div class="cta-box">
                 <h3>Incorporate with Complete Address Privacy</h3>
                 <p>Register your LLC securely via Northwest Registered Agent for premier compliance support and address protection.</p>
-                <a href="https://www.northwestregisteredagent.com/" target="_blank" rel="nofollow noopener" class="btn">Form Your LLC with Northwest</a>
+                <a href="recommends.html?offer=northwest" target="_blank" rel="nofollow noopener" class="btn">Form Your LLC with Northwest</a>
             </div>
 
             <button class="cite-btn" onclick="copyCitation('zenbusiness-vs-northwest.html')">
@@ -633,7 +633,7 @@
             }
         });
     </script>
-    <!-- Mobile Navigation Toggle Script -->
+        <!-- Mobile Navigation Toggle Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var menuToggle = document.getElementById('menuToggle');
@@ -641,15 +641,22 @@
             var dropdownTrigger = document.getElementById('dropdownTrigger');
             var dropdownMenu = document.getElementById('dropdownMenu');
 
+            // Helper to check if we are on a mobile screen
+            function isMobile() {
+                return window.innerWidth < 768;
+            }
+
             // Toggle Mobile Drawer
             menuToggle.addEventListener('click', function(e) {
+                if (!isMobile()) return;
                 e.stopPropagation();
                 navbar.classList.toggle('open');
                 menuToggle.textContent = navbar.classList.contains('open') ? '✕' : '☰';
             });
 
-            // Toggle Dropdown inside Drawer
+            // Toggle Dropdown inside Drawer (mobile only)
             dropdownTrigger.addEventListener('click', function(e) {
+                if (!isMobile()) return; // Let CSS hover handle desktop
                 e.preventDefault();
                 e.stopPropagation();
                 var isDisplayed = dropdownMenu.style.display === 'flex';
@@ -658,9 +665,20 @@
 
             // Close menu if clicking outside
             document.addEventListener('click', function(e) {
+                if (!isMobile()) return;
                 if (!navbar.contains(e.target) && !menuToggle.contains(e.target)) {
                     navbar.classList.remove('open');
                     menuToggle.textContent = '☰';
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+
+            // Reset inline styles on window resize
+            window.addEventListener('resize', function() {
+                if (!isMobile()) {
+                    navbar.classList.remove('open');
+                    menuToggle.textContent = '☰';
+                    dropdownMenu.style.removeAttribute('style'); // Clear mobile inline styles
                 }
             });
         });
