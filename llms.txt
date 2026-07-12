@@ -1,0 +1,13 @@
+# Sovereign System
+
+Sovereign System provides independent, data-driven systems research, architecture blueprints, and technology reviews. We focus on helping enterprises build resilient, compliant, and self-hosted software stacks.
+
+## Core Verticals
+- **Enterprise Infrastructure:** High-availability hosting, container isolation, cloud databases.
+- **Legal & Compliance:** LLC formation networks, address privacy, corporate compliance automation.
+- **Clinical Systems:** HIPAA-compliant architectures, clinical databases.
+
+## Deployed Review Guides
+- [Sales AI Course Review](https://system.hive.baby/sales-ai-course-review.html): Technical review of AI-generated video spokesperson rendering pipelines and character consistency.
+- [ZenBusiness vs Northwest Registered Agent](https://system.hive.baby/zenbusiness-vs-northwest.html): Comparison audit of corporate compliance frameworks and address privacy controls.
+- [WP Engine vs Kinsta](https://system.hive.baby/wpengine-vs-kinsta.html): Managed WordPress hosting performance benchmark comparing container isolation and global TTFB.

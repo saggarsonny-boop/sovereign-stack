@@ -489,6 +489,52 @@
                 gap: 1.25rem;
             }
         }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--bg-surface);
+            min-width: 260px;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            z-index: 100;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: var(--text-secondary);
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--bg-surface-hover);
+            color: var(--text-primary);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -497,11 +543,18 @@
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">Sovereign System</a>
-            <nav>
+                        <nav>
                 <ul>
-                    <li><a href="#sectors">Sectors</a></li>
-                    <li><a href="#reviews">Featured Comparisons</a></li>
-                    <li><a href="#about">Research Method</a></li>
+                    <li><a href="index.html#sectors">Sectors</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#reviews" style="cursor: default;">Systems Reviews ▾</a>
+                        <div class="dropdown-content">
+                            <a href="sales-ai-course-review.html">Sales AI Course Review</a>
+                            <a href="zenbusiness-vs-northwest.html">ZenBusiness vs Northwest</a>
+                            <a href="wpengine-vs-kinsta.html">WP Engine vs Kinsta</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#about">Research Method</a></li>
                 </ul>
             </nav>
             <a href="#reviews" class="btn">View Reviews</a>
