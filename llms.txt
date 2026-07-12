@@ -8,5 +8,8 @@ Sovereign System provides independent, data-driven systems research, architectur
 
 ## Deployed Review Guides
 - [Sales AI Course Review](https://system.hive.baby/sales-ai-course-review.html): Technical review of AI-generated video spokesperson rendering pipelines and character consistency.
+- [Instant AI Agency Review](https://system.hive.baby/instant-ai-agency-review.html): Auditing B2B lead acquisition blueprints and database lead revival automations.
 - [Neuro Serge Review](https://system.hive.baby/neuro-serge-review.html): Rigorous clinical systems audit of Neuro Serge, evaluating cognitive formulation purity, manufacturing compliance, and database tracking.
 - [ProDentim Review](https://system.hive.baby/prodentim-review.html): Clinical systems review of ProDentim dental probiotic viability, oral microbiome stabilization, and batch validation metrics.
+- [Joint Genesis Review](https://system.hive.baby/joint-genesis-review.html): Systems review of Joint Genesis synovial fluid hydration and clinical joint mobility stabilization.
+- [NeuroQuiet Review](https://system.hive.baby/neuroquiet-review.html): Audit of NeuroQuiet brain and hearing support formulations, botanical certifications, and pathway shielding.
