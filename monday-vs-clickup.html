@@ -200,8 +200,9 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            margin-top: 0.5rem;
-            overflow: hidden;
+            margin-top: 0; /* Removed gap to prevent hover loss */
+            padding-top: 0.5rem; /* Safe spacing inside the container */
+            overflow: visible;
         }
 
         .dropdown-content a {
