@@ -370,6 +370,128 @@
                 max-width: 800px;
             }
         }
+
+        /* Configurator Styles */
+        .configurator-section {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+        .config-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .config-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .config-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .config-opt-btn {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+        }
+        .config-opt-btn.active, .config-opt-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        .config-result {
+            display: none;
+            background-color: rgba(99, 102, 241, 0.05);
+            border: 1px dashed var(--accent);
+            border-radius: 10px;
+            padding: 1.5rem;
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Request Audit Box Styles */
+        .request-section {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem 1.5rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        .request-box {
+            max-width: 600px;
+            margin: 1.5rem auto 0 auto;
+        }
+        .request-textarea {
+            width: 100%;
+            height: 100px;
+            background-color: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: none;
+            margin-bottom: 1rem;
+        }
+        .request-textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        /* Citation Styles */
+        .cite-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .cite-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        /* Nested Sub-Dropdown Navigation styles */
+        .dropdown-menu {
+            min-width: 280px;
+        }
+        .dropdown-header {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            padding: 10px 18px 5px 18px;
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border);
+        }
     </style>
 </head>
 <body>
@@ -379,15 +501,18 @@
         <div class="container header-inner">
             <a href="index.html" class="logo">Sovereign System</a>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
-            <nav id="navbar">
+                        <nav id="navbar">
                 <ul>
                     <li><a href="index.html#sectors">Sectors</a></li>
                     <li class="dropdown">
                         <a href="#" id="dropdownTrigger">Reviews ▾</a>
                         <div class="dropdown-menu" id="dropdownMenu">
+                            <div class="dropdown-header">Enterprise Infrastructure</div>
                             <a href="sales-ai-course-review.html">Sales AI Course Review</a>
-                            <a href="zenbusiness-vs-northwest.html">ZenBusiness vs Northwest</a>
                             <a href="wpengine-vs-kinsta.html">WP Engine vs Kinsta</a>
+                            <div class="dropdown-header">Legal & Compliance</div>
+                            <a href="zenbusiness-vs-northwest.html">ZenBusiness vs Northwest</a>
+                            <div class="dropdown-header">Clinical Systems</div>
                             <a href="neuro-serge-review.html">Neuro Serge Review</a>
                             <a href="prodentim-review.html">ProDentim Review</a>
                         </div>
@@ -408,6 +533,18 @@
                 <span>Author: Sovereign System Research</span>
             </div>
 
+            <button class="cite-btn" onclick="copyCitation('prodentim-review.html')">
+                <span>🔗 Cite This Audit</span>
+            </button>
+            <script>
+                function copyCitation(filename) {
+                    var citationText = "[Sovereign System Audit: " + document.title + "](https://system.hive.baby/" + filename + ")";
+                    navigator.clipboard.writeText(citationText).then(function() {
+                        alert("Citation markdown copied to clipboard!");
+                    });
+                }
+            </script>
+            
             <p>Stabilizing the human microbiome requires clinical systems capable of preserving raw bacterial colony counts. **ProDentim** is a high-potency oral probiotic chewable designed to rebalance microflora. In this technical review, we evaluate their colony verification methods, shipment logistics viability, and clinical strain stability.</p>
 
             <h2>System Quality Metrics</h2>
@@ -452,6 +589,18 @@
                 <a href="https://e84039vqqh7gxcvmxmkbzime7i.hop.clickbank.net" target="_blank" rel="nofollow noopener" class="btn">Deploy ProDentim →</a>
             </div>
 
+            <button class="cite-btn" onclick="copyCitation('prodentim-review.html')">
+                <span>🔗 Cite This Audit</span>
+            </button>
+            <script>
+                function copyCitation(filename) {
+                    var citationText = "[Sovereign System Audit: " + document.title + "](https://system.hive.baby/" + filename + ")";
+                    navigator.clipboard.writeText(citationText).then(function() {
+                        alert("Citation markdown copied to clipboard!");
+                    });
+                }
+            </script>
+            
             <p><em>Disclaimer: Sovereign System is supported by affiliate referral programs. If you navigate through our research links and subscribe to a service, we may receive a commission at no extra cost to you.</em></p>
         </main>
     </div>

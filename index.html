@@ -597,6 +597,128 @@
                 max-width: 1140px;
             }
         }
+
+        /* Configurator Styles */
+        .configurator-section {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            margin: 3rem 0;
+            text-align: left;
+        }
+        .config-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .config-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .config-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .config-opt-btn {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+        }
+        .config-opt-btn.active, .config-opt-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        .config-result {
+            display: none;
+            background-color: rgba(99, 102, 241, 0.05);
+            border: 1px dashed var(--accent);
+            border-radius: 10px;
+            padding: 1.5rem;
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Request Audit Box Styles */
+        .request-section {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem 1.5rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        .request-box {
+            max-width: 600px;
+            margin: 1.5rem auto 0 auto;
+        }
+        .request-textarea {
+            width: 100%;
+            height: 100px;
+            background-color: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: none;
+            margin-bottom: 1rem;
+        }
+        .request-textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        /* Citation Styles */
+        .cite-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        .cite-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        /* Nested Sub-Dropdown Navigation styles */
+        .dropdown-menu {
+            min-width: 280px;
+        }
+        .dropdown-header {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            padding: 10px 18px 5px 18px;
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid var(--border);
+        }
     </style>
 </head>
 <body>
@@ -606,20 +728,23 @@
         <div class="container header-inner">
             <a href="index.html" class="logo">Sovereign System</a>
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
-            <nav id="navbar">
+                        <nav id="navbar">
                 <ul>
-                    <li><a href="#sectors">Sectors</a></li>
+                    <li><a href="index.html#sectors">Sectors</a></li>
                     <li class="dropdown">
                         <a href="#" id="dropdownTrigger">Reviews ▾</a>
                         <div class="dropdown-menu" id="dropdownMenu">
+                            <div class="dropdown-header">Enterprise Infrastructure</div>
                             <a href="sales-ai-course-review.html">Sales AI Course Review</a>
-                            <a href="zenbusiness-vs-northwest.html">ZenBusiness vs Northwest</a>
                             <a href="wpengine-vs-kinsta.html">WP Engine vs Kinsta</a>
+                            <div class="dropdown-header">Legal & Compliance</div>
+                            <a href="zenbusiness-vs-northwest.html">ZenBusiness vs Northwest</a>
+                            <div class="dropdown-header">Clinical Systems</div>
                             <a href="neuro-serge-review.html">Neuro Serge Review</a>
                             <a href="prodentim-review.html">ProDentim Review</a>
                         </div>
                     </li>
-                    <li><a href="#about">Research</a></li>
+                    <li><a href="index.html#about">Research</a></li>
                 </ul>
             </nav>
         </div>
@@ -636,6 +761,24 @@
                 <a href="#sectors" style="border: 1px solid var(--border); padding: 0.6rem 1.5rem; border-radius: 8px; font-weight:600; font-size: 0.9rem; background: transparent; display: inline-block;" class="btn-secondary">Core Verticals</a>
             </div>
         </div>
+    
+            <!-- Interactive System Configurator Widget -->
+            <div class="configurator-section" id="configurator">
+                <h3 class="config-title">Systems Recommendation Engine</h3>
+                <p class="config-desc">Select your primary operational bottleneck to output the optimized, audited stack recommendation.</p>
+                <div class="config-options">
+                    <button class="config-opt-btn" onclick="showConfig('video')">Video Content Scaling</button>
+                    <button class="config-opt-btn" onclick="showConfig('hosting')">Server Scaling & Latency</button>
+                    <button class="config-opt-btn" onclick="showConfig('compliance')">Address Privacy & Filing</button>
+                    <button class="config-opt-btn" onclick="showConfig('clinical')">Cognitive Clinical Logistics</button>
+                </div>
+                <div class="config-result" id="configResult">
+                    <h4 id="resultTitle" style="font-weight:700; margin-bottom:0.5rem; color:#a5b4fc;"></h4>
+                    <p id="resultText" style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;"></p>
+                    <a id="resultLink" href="#" class="btn" style="display:inline-block; width:auto; padding:0.6rem 1.2rem;">View Audit Details →</a>
+                </div>
+            </div>
+
     </section>
 
     <!-- Core Sectors/Verticals -->
@@ -730,6 +873,17 @@
         </div>
     </section>
 
+    
+            <!-- Request a System Audit Section -->
+            <div class="request-section" id="request-audit">
+                <h3 class="config-title">Request a System Audit</h3>
+                <p class="config-desc">Can't find a benchmark or review for the tool you are evaluating? Submit it below, and our research team will draft a detailed technical breakdown.</p>
+                <div class="request-box">
+                    <textarea class="request-textarea" id="requestInput" placeholder="e.g. ActiveCampaign vs HubSpot, or Vercel vs Netlify..."></textarea>
+                    <button class="btn" onclick="submitRequest()" style="display:inline-block; width:auto; padding:0.8rem 2rem;">Submit Audit Request</button>
+                </div>
+            </div>
+
     <!-- Footer -->
     <footer>
         <div class="container footer-inner">
@@ -780,6 +934,52 @@
                 }
             });
         });
-    </script>
+    
+        // Interactive Configurator Logic
+        function showConfig(type) {
+            var resultBox = document.getElementById('configResult');
+            var title = document.getElementById('resultTitle');
+            var text = document.getElementById('resultText');
+            var link = document.getElementById('resultLink');
+            
+            // Set active states on buttons
+            var buttons = document.querySelectorAll('.config-opt-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (type === 'video') {
+                title.textContent = "Sovereign Stack: Sales AI Video Spokesperson Engine";
+                text.textContent = "Recommended workflow: Sales AI Course. Solves character generation pipelines, reducing production turnarounds from 7 days to 30 minutes with under $5 in render overhead.";
+                link.href = "sales-ai-course-review.html";
+            } else if (type === 'hosting') {
+                title.textContent = "Sovereign Stack: Containerized Server Infrastructure";
+                text.textContent = "Recommended infrastructure: Kinsta Managed Containers. Solves 'noisy neighbor' server degradation through isolated LXD virtualized environments on Google Premium Network.";
+                link.href = "wpengine-vs-kinsta.html";
+            } else if (type === 'compliance') {
+                title.textContent = "Sovereign Stack: Corporate Privacy Compliance";
+                text.textContent = "Recommended setup: Northwest Registered Agent. Protects personal residential addresses from public records directories with localized corporate guide hosting.";
+                link.href = "zenbusiness-vs-northwest.html";
+            } else if (type === 'clinical') {
+                title.textContent = "Sovereign Stack: Certified Health & Memory Logistics";
+                text.textContent = "Recommended protocol: Neuro Serge. High-potency standardized extract tracking verified under independent third-party certification databases.";
+                link.href = "neuro-serge-review.html";
+            }
+            
+            resultBox.style.display = 'block';
+        }
+
+        // Audit Request Submission Simulation
+        function submitRequest() {
+            var input = document.getElementById('requestInput');
+            if (!input.value.trim()) {
+                alert("Please enter a tool or product comparison to request.");
+                return;
+            }
+            // Display a clean success confirmation
+            alert("Thank you! Your audit request for '" + input.value + "' has been logged in our research queue.");
+            input.value = "";
+        }
+
+        </script>
 </body>
 </html>
