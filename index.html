@@ -685,5 +685,33 @@
         </div>
     </footer>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var dropdown = document.querySelector('.dropdown');
+            var dropdownContent = document.querySelector('.dropdown-content');
+            
+            if (dropdown && dropdownContent) {
+                // Toggle on click/tap
+                dropdown.addEventListener('click', function(e) {
+                    // Only toggle if clicked directly on the trigger link
+                    if (e.target.closest('a')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var isDisplayed = dropdownContent.style.display === 'block';
+                        dropdownContent.style.display = isDisplayed ? 'none' : 'block';
+                    }
+                });
+
+                // Close dropdown if clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdownContent.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
