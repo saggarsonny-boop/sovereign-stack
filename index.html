@@ -628,12 +628,13 @@
             background-color: var(--bg-base);
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
+            padding: 0.45rem 1rem;
+            border-radius: 9999px; /* Pill/Capsule shape */
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.88rem;
+            font-weight: 500;
+            font-size: 0.78rem; /* Smaller text size to avoid crowding */
             transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
         }
         .config-opt-btn.active, .config-opt-btn:hover {
             border-color: var(--accent);
