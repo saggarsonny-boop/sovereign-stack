@@ -38,18 +38,18 @@
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": "Featured Systems Comparisons",
-      "description": "Expert comparison reviews for high-ticket software systems.",
+      "name": "Featured Systems Reviews",
+      "description": "Expert comparison reviews for high-ticket software and health systems.",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "item": {
             "@type": "Review",
-            "name": "Monday.com vs ClickUp Comparison Guide",
+            "name": "Sales AI Course Spokesperson Review",
             "itemReviewed": {
               "@type": "SoftwareApplication",
-              "name": "Project Management Systems"
+              "name": "AI Video Systems"
             },
             "author": {
               "@type": "Organization",
@@ -67,10 +67,10 @@
           "position": 2,
           "item": {
             "@type": "Review",
-            "name": "ZenBusiness vs Northwest LLC Formation Review",
+            "name": "Neuro Serge Brain Support Systems Review",
             "itemReviewed": {
-              "@type": "GovernmentService",
-              "name": "Legal Formation & Compliance Systems"
+              "@type": "SoftwareApplication",
+              "name": "Brain Health Systems"
             },
             "author": {
               "@type": "Organization",
@@ -88,10 +88,10 @@
           "position": 3,
           "item": {
             "@type": "Review",
-            "name": "WP Engine vs Kinsta Managed WordPress Review",
+            "name": "ProDentim Dental Probiotics Systems Review",
             "itemReviewed": {
               "@type": "SoftwareApplication",
-              "name": "Managed Hosting Infrastructure"
+              "name": "Oral Probiotic Formulation"
             },
             "author": {
               "@type": "Organization",
@@ -99,7 +99,7 @@
             },
             "reviewRating": {
               "@type": "Rating",
-              "ratingValue": "4.7",
+              "ratingValue": "4.8",
               "bestRating": "5"
             }
           }
@@ -110,18 +110,19 @@
 
     <style>
         :root {
-            --bg-base: #0a0b10;
-            --bg-surface: #12131a;
-            --bg-surface-hover: #1b1c26;
+            --bg-base: #08090d;
+            --bg-surface: #111218;
+            --bg-surface-hover: #191b24;
             --accent: #6366f1;
             --accent-hover: #818cf8;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
             --text-muted: #6b7280;
-            --border: #27273a;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --border: #1f2130;
+            --font-sans: 'Inter', sans-serif;
         }
 
+        /* Mobile-First Base Rules */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -143,34 +144,35 @@
             transition: all 0.2s ease-in-out;
         }
 
-        /* Container */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            width: 100%;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Header */
+        /* Mobile Header Layout */
         header {
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            background: rgba(10, 11, 16, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 100;
+            background: rgba(8, 9, 13, 0.9);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
         }
 
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 5rem;
+            height: 4.5rem;
         }
 
         .logo {
             font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: -0.05em;
+            font-size: 1.25rem;
+            letter-spacing: -0.04em;
             background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -182,63 +184,99 @@
         .logo::before {
             content: '';
             display: inline-block;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             background: var(--accent);
-            border-radius: 3px;
+            border-radius: 2px;
+        }
+
+        /* Responsive Nav Menu (Mobile First Drawer) */
+        nav {
+            display: none;
+            position: fixed;
+            top: 4.5rem;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 4.5rem);
+            background-color: var(--bg-base);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1.25rem;
+            z-index: 999;
+        }
+
+        nav.open {
+            display: block;
         }
 
         nav ul {
-            display: flex;
             list-style: none;
-            gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
         nav a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
         }
 
-        nav a:hover {
+        .dropdown-menu {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .dropdown-menu a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Mobile Menu Toggle button */
+        .menu-toggle {
+            background: transparent;
+            border: none;
             color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn {
+            display: block;
+            width: 100%;
             background-color: var(--accent);
             color: #fff;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 0.9rem;
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+            text-align: center;
+            transition: all 0.2s ease;
         }
 
         .btn:hover {
             background-color: var(--accent-hover);
-            transform: translateY(-1px);
         }
 
         /* Hero */
         .hero {
-            padding: 8rem 0 6rem 0;
+            padding: 4rem 0 3rem 0;
             text-align: center;
             position: relative;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
         }
 
         .tagline {
@@ -247,107 +285,107 @@
             color: #a5b4fc;
             padding: 0.35rem 1rem;
             border-radius: 9999px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             border: 1px solid rgba(99, 102, 241, 0.25);
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 2.25rem;
             font-weight: 800;
             letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
             background: linear-gradient(to right, #ffffff, #d1d5db);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-desc {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 2.5rem auto;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
             font-weight: 400;
         }
 
         /* Sectors / Verticals */
         .sectors {
-            padding: 6rem 0;
+            padding: 4rem 0;
             border-top: 1px solid var(--border);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .section-header h2 {
-            font-size: 2.25rem;
+            font-size: 1.75rem;
             font-weight: 800;
             letter-spacing: -0.02em;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .section-header p {
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
+            font-size: 0.95rem;
         }
 
+        /* Mobile-First Grid: 1 column by default */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .card {
             background-color: var(--bg-surface);
             border: 1px solid var(--border);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 12px;
             transition: all 0.3s ease;
         }
 
         .card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
             background-color: var(--bg-surface-hover);
         }
 
         .card-icon {
-            width: 3rem;
-            height: 3rem;
+            width: 2.75rem;
+            height: 2.75rem;
             background: rgba(99, 102, 241, 0.1);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--accent);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.35rem;
+            margin-bottom: 1.25rem;
         }
 
         .card h3 {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
 
         /* Featured Reviews / Comparisons */
         .reviews {
-            padding: 6rem 0;
+            padding: 4rem 0;
             border-top: 1px solid var(--border);
-            background: linear-gradient(180deg, var(--bg-base) 0%, rgba(18, 19, 26, 0.5) 100%);
+            background: linear-gradient(180deg, var(--bg-base) 0%, rgba(17, 18, 24, 0.5) 100%);
         }
 
         .review-card {
@@ -362,43 +400,48 @@
 
         .review-card:hover {
             border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .review-badge {
             background-color: rgba(99, 102, 241, 0.1);
             color: #a5b4fc;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            padding: 0.25rem 0.75rem;
+            padding: 0.25rem 0.65rem;
             border-radius: 9999px;
             align-self: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
         .review-body {
-            padding: 2.5rem;
+            padding: 2rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .review-body h3 {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             line-height: 1.25;
+        }
+
+        .review-body p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
         }
 
         .review-meta {
             display: flex;
             align-items: center;
             gap: 1rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             margin-top: auto;
-            padding-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--border);
         }
 
@@ -407,133 +450,152 @@
             font-weight: bold;
         }
 
-        /* Affiliate Link / Action */
         .affiliate-link {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 1.5rem;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.02);
+            margin-top: auto;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.01);
             border-radius: 8px;
             border: 1px dashed var(--border);
+            margin-bottom: 1rem;
         }
 
         .affiliate-link span {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
         }
 
         .affiliate-link a {
             color: var(--accent);
             font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .affiliate-link a:hover {
-            color: var(--accent-hover);
+            font-size: 0.85rem;
         }
 
         /* Footer & Disclosure */
         footer {
             border-top: 1px solid var(--border);
-            padding: 4rem 0;
-            background-color: #07080b;
+            padding: 3rem 0;
+            background-color: #050608;
         }
 
         .footer-inner {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
             text-align: center;
         }
 
         .disclosure {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             max-width: 800px;
             line-height: 1.6;
+            padding: 0 0.5rem;
         }
 
         .footer-links {
             display: flex;
-            gap: 1.5rem;
-            font-size: 0.85rem;
+            gap: 1.25rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
         }
 
         .copyright {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.75rem;
+        /* Desktop Breakpoints (Scaling Up) */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
             }
-            .header-inner {
-                flex-direction: column;
+            .menu-toggle {
+                display: none;
+            }
+            nav {
+                display: block;
+                position: static;
+                width: auto;
                 height: auto;
-                padding: 1.5rem 0;
-                gap: 1rem;
+                background: transparent;
+                border: none;
+                padding: 0;
             }
             nav ul {
-                gap: 1.25rem;
+                flex-direction: row;
+                gap: 2rem;
+                align-items: center;
+            }
+            nav a {
+                font-size: 0.95rem;
+                font-weight: 500;
+                color: var(--text-secondary);
+                padding: 0;
+            }
+            nav a:hover {
+                color: var(--text-primary);
+            }
+            .dropdown {
+                position: relative;
+            }
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--bg-surface);
+                min-width: 240px;
+                box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0;
+                margin-top: 0.75rem;
+                overflow: hidden;
+            }
+            .dropdown:hover .dropdown-menu {
+                display: flex;
+                flex-direction: column;
+            }
+            .dropdown-menu a {
+                padding: 12px 18px;
+                border-bottom: 1px solid var(--border);
+                text-align: left;
+            }
+            .dropdown-menu a:last-child {
+                border-bottom: none;
+            }
+            .btn {
+                display: inline-block;
+                width: auto;
+                padding: 0.6rem 1.5rem;
+            }
+            .hero {
+                padding: 6rem 0 4rem 0;
+            }
+            h1 {
+                font-size: 3.5rem;
+            }
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
             }
         }
 
-        /* Dropdown styles */
-        .dropdown {
-            position: relative;
-            display: inline-block;
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: var(--bg-surface);
-            min-width: 260px;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            z-index: 100;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
-
-        .dropdown-content a {
-            color: var(--text-secondary);
-            padding: 12px 20px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.88rem;
-            font-weight: 500;
-            border-bottom: 1px solid var(--border);
-            text-align: left;
-        }
-
-        .dropdown-content a:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-content a:hover {
-            background-color: var(--bg-surface-hover);
-            color: var(--text-primary);
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
         }
     </style>
 </head>
@@ -542,22 +604,24 @@
     <!-- Header -->
     <header>
         <div class="container header-inner">
-            <a href="#" class="logo">Sovereign System</a>
-                        <nav>
+            <a href="index.html" class="logo">Sovereign System</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
+            <nav id="navbar">
                 <ul>
-                    <li><a href="index.html#sectors">Sectors</a></li>
+                    <li><a href="#sectors">Sectors</a></li>
                     <li class="dropdown">
-                        <a href="index.html#reviews" style="cursor: default;">Systems Reviews ▾</a>
-                        <div class="dropdown-content">
+                        <a href="#" id="dropdownTrigger">Reviews ▾</a>
+                        <div class="dropdown-menu" id="dropdownMenu">
                             <a href="sales-ai-course-review.html">Sales AI Course Review</a>
                             <a href="zenbusiness-vs-northwest.html">ZenBusiness vs Northwest</a>
                             <a href="wpengine-vs-kinsta.html">WP Engine vs Kinsta</a>
+                            <a href="neuro-serge-review.html">Neuro Serge Review</a>
+                            <a href="prodentim-review.html">ProDentim Review</a>
                         </div>
                     </li>
-                    <li><a href="index.html#about">Research Method</a></li>
+                    <li><a href="#about">Research</a></li>
                 </ul>
             </nav>
-            <a href="#reviews" class="btn">View Reviews</a>
         </div>
     </header>
 
@@ -566,10 +630,10 @@
         <div class="container">
             <span class="tagline">Independent Systems Research</span>
             <h1>Architecting Sovereign Systems</h1>
-            <p class="hero-desc">We conduct independent audits, architecture diagrams, and objective comparison analyses of modern software systems to help enterprises build resilient stacks.</p>
-            <div style="display: flex; justify-content: center; gap: 1rem;">
+            <p class="hero-desc">We conduct independent audits, architecture diagrams, and objective comparison analyses of modern software and health systems to help enterprises build resilient stacks.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
                 <a href="#reviews" class="btn">Explore Guides</a>
-                <a href="#sectors" style="border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 6px; font-weight:600; font-size: 0.9rem; background: transparent;" class="btn-secondary">Core Verticals</a>
+                <a href="#sectors" style="border: 1px solid var(--border); padding: 0.6rem 1.5rem; border-radius: 8px; font-weight:600; font-size: 0.9rem; background: transparent; display: inline-block;" class="btn-secondary">Core Verticals</a>
             </div>
         </div>
     </section>
@@ -616,8 +680,8 @@
                 <article class="review-card">
                     <div class="review-body">
                         <span class="review-badge">Enterprise Infra</span>
-                        <h3>Sales AI Course: Spokesperson AI Review</h3>
-                        <p>An in-depth technical audit of the Sales AI Course workflow. We evaluate character rendering consistency, generation latency, and output ROI.</p>
+                        <h3>Sales AI Course Review</h3>
+                        <p>A comprehensive systems evaluation comparing AI character video generation pipelines, rendering speeds, and campaign conversions.</p>
                         <div class="affiliate-link">
                             <span>Sovereign Choice: <strong>Sales AI</strong></span>
                             <a href="sales-ai-course-review.html">Analyze Stack →</a>
@@ -632,12 +696,12 @@
                 <!-- Guide 2 -->
                 <article class="review-card">
                     <div class="review-body">
-                        <span class="review-badge">Legal & Compliance</span>
-                        <h3>ZenBusiness vs Northwest Registered Agent</h3>
-                        <p>Examining processing turnarounds, hidden platform pricing, compliance calendar accuracy, and registered agent privacy protections.</p>
+                        <span class="review-badge">Clinical Infrastructure</span>
+                        <h3>Neuro Serge Review</h3>
+                        <p>Examining ingredient purity tracking, standardized extract viability, and lab certification databases in clinical brain support systems.</p>
                         <div class="affiliate-link">
-                            <span>Sovereign Choice: <strong>Northwest</strong></span>
-                            <a href="zenbusiness-vs-northwest.html">Analyze Stack →</a>
+                            <span>Sovereign Choice: <strong>Neuro Serge</strong></span>
+                            <a href="neuro-serge-review.html">Analyze Stack →</a>
                         </div>
                         <div class="review-meta">
                             <span>Score: <strong class="rating-star">★ 4.9</strong>/5</span>
@@ -650,14 +714,14 @@
                 <article class="review-card">
                     <div class="review-body">
                         <span class="review-badge">Clinical Infrastructure</span>
-                        <h3>WP Engine vs Kinsta</h3>
-                        <p>Stress-testing server response under heavy loads, caching engine efficiency, database optimization tools, and automated backup reliability.</p>
+                        <h3>ProDentim Review</h3>
+                        <p>Evaluating oral microbiome rebalancing performance, freeze-dried strain stability, and manufacturing compliance guidelines.</p>
                         <div class="affiliate-link">
-                            <span>Sovereign Choice: <strong>Kinsta</strong></span>
-                            <a href="wpengine-vs-kinsta.html">Analyze Stack →</a>
+                            <span>Sovereign Choice: <strong>ProDentim</strong></span>
+                            <a href="prodentim-review.html">Analyze Stack →</a>
                         </div>
                         <div class="review-meta">
-                            <span>Score: <strong class="rating-star">★ 4.7</strong>/5</span>
+                            <span>Score: <strong class="rating-star">★ 4.8</strong>/5</span>
                             <span>Updated: July 2026</span>
                         </div>
                     </div>
@@ -685,33 +749,37 @@
         </div>
     </footer>
 
-
+    <!-- Mobile Navigation Toggle Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var dropdown = document.querySelector('.dropdown');
-            var dropdownContent = document.querySelector('.dropdown-content');
-            
-            if (dropdown && dropdownContent) {
-                // Toggle on click/tap
-                dropdown.addEventListener('click', function(e) {
-                    // Only toggle if clicked directly on the trigger link
-                    if (e.target.closest('a')) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        var isDisplayed = dropdownContent.style.display === 'block';
-                        dropdownContent.style.display = isDisplayed ? 'none' : 'block';
-                    }
-                });
+            var menuToggle = document.getElementById('menuToggle');
+            var navbar = document.getElementById('navbar');
+            var dropdownTrigger = document.getElementById('dropdownTrigger');
+            var dropdownMenu = document.getElementById('dropdownMenu');
 
-                // Close dropdown if clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!dropdown.contains(e.target)) {
-                        dropdownContent.style.display = 'none';
-                    }
-                });
-            }
+            // Toggle Mobile Drawer
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navbar.classList.toggle('open');
+                menuToggle.textContent = navbar.classList.contains('open') ? '✕' : '☰';
+            });
+
+            // Toggle Dropdown inside Drawer
+            dropdownTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var isDisplayed = dropdownMenu.style.display === 'flex';
+                dropdownMenu.style.display = isDisplayed ? 'none' : 'flex';
+            });
+
+            // Close menu if clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navbar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navbar.classList.remove('open');
+                    menuToggle.textContent = '☰';
+                }
+            });
         });
     </script>
 </body>
-
 </html>

@@ -49,17 +49,19 @@
     }
     </script>
 
-    <style>
+        <style>
         :root {
-            --bg-base: #0a0b10;
-            --bg-surface: #12131a;
+            --bg-base: #08090d;
+            --bg-surface: #111218;
+            --bg-surface-hover: #191b24;
             --accent: #6366f1;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
-            --border: #27273a;
+            --border: #1f2130;
             --font-sans: 'Inter', sans-serif;
         }
 
+        /* Mobile-First Base Rules */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -70,101 +72,214 @@
             font-family: var(--font-sans);
             background-color: var(--bg-base);
             color: var(--text-primary);
-            line-height: 1.7;
-            padding: 2rem 0;
+            line-height: 1.6;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+            width: 100%;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
+        /* Mobile Header */
         header {
-            margin-bottom: 3rem;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 1.5rem;
+            position: sticky;
+            top: 0;
+            background: rgba(8, 9, 13, 0.9);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4.5rem;
         }
 
         .logo {
             font-weight: 800;
-            font-size: 1.5rem;
-            color: #fff;
+            font-size: 1.25rem;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             text-decoration: none;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-            color: var(--accent);
+        .logo::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Responsive Nav Menu (Mobile First Drawer) */
+        nav {
+            display: none;
+            position: fixed;
+            top: 4.5rem;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 4.5rem);
+            background-color: var(--bg-base);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1.25rem;
+            z-index: 999;
+        }
+
+        nav.open {
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
             text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-menu {
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .dropdown-menu a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Mobile Menu Toggle button */
+        .menu-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Article styling */
+        main {
+            padding: 3rem 0;
         }
 
         h1 {
-            font-size: 2.75rem;
+            font-size: 2rem;
             font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
             letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
         }
 
         .meta {
             display: flex;
-            gap: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             border-bottom: 1px solid var(--border);
             padding-bottom: 1rem;
         }
 
         h2 {
-            font-size: 1.75rem;
-            margin: 2.5rem 0 1rem 0;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
             font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
         p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             color: #d1d5db;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
         }
 
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 2rem 0;
+            min-width: 500px;
         }
 
         .comparison-table th, .comparison-table td {
-            border: 1px solid var(--border);
-            padding: 1rem;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
             text-align: left;
+            font-size: 0.85rem;
         }
 
         .comparison-table th {
             background-color: var(--bg-surface);
+            color: #a5b4fc;
             font-weight: 600;
         }
 
+        /* Call To Action Box (Thumb Friendly) */
         .cta-box {
-            background: var(--bg-surface);
-            border: 1px solid var(--accent);
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 3rem 0;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem 1.25rem;
+            margin: 2.5rem 0;
             text-align: center;
         }
 
+        .cta-box h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+
         .btn {
-            display: inline-block;
+            display: block;
+            width: 100%;
             background-color: var(--accent);
             color: #fff;
-            padding: 0.8rem 1.8rem;
-            border-radius: 6px;
+            padding: 1rem;
+            border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
-            margin-top: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+            transition: all 0.2s ease-in-out;
+            margin-top: 1.25rem;
         }
 
         .btn:hover {
@@ -172,67 +287,115 @@
         }
 
         footer {
-            margin-top: 5rem;
             border-top: 1px solid var(--border);
-            padding-top: 2rem;
+            padding: 3rem 0;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
+            background-color: #050608;
         }
 
-        /* Dropdown styles */
-        .dropdown {
-            position: relative;
-            display: inline-block;
+        /* Large Screen Breakpoints (Up scaling) */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+            .menu-toggle {
+                display: none;
+            }
+            nav {
+                display: block;
+                position: static;
+                width: auto;
+                height: auto;
+                background: transparent;
+                border: none;
+                padding: 0;
+            }
+            nav ul {
+                flex-direction: row;
+                gap: 2rem;
+                align-items: center;
+            }
+            nav a {
+                font-size: 0.95rem;
+                font-weight: 500;
+                color: var(--text-secondary);
+                padding: 0;
+            }
+            nav a:hover {
+                color: var(--text-primary);
+            }
+            .dropdown {
+                position: relative;
+            }
+            .dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--bg-surface);
+                min-width: 240px;
+                box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0;
+                margin-top: 0.75rem;
+            }
+            .dropdown:hover .dropdown-menu {
+                display: flex;
+            }
+            .dropdown-menu a {
+                padding: 12px 18px;
+                border-bottom: 1px solid var(--border);
+            }
+            .dropdown-menu a:last-child {
+                border-bottom: none;
+            }
+            h1 {
+                font-size: 2.75rem;
+            }
+            .btn {
+                display: inline-block;
+                width: auto;
+                padding: 0.8rem 2rem;
+            }
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: var(--bg-surface);
-            min-width: 260px;
-            box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            z-index: 100;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
-
-        .dropdown-content a {
-            color: var(--text-secondary);
-            padding: 12px 20px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.88rem;
-            font-weight: 500;
-            border-bottom: 1px solid var(--border);
-            text-align: left;
-        }
-
-        .dropdown-content a:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-content a:hover {
-            background-color: var(--bg-surface-hover);
-            color: var(--text-primary);
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
+        @media (min-width: 992px) {
+            .container {
+                max-width: 800px;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <header>
+            <!-- Header -->
+    <header>
+        <div class="container header-inner">
             <a href="index.html" class="logo">Sovereign System</a>
-        </header>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
+            <nav id="navbar">
+                <ul>
+                    <li><a href="index.html#sectors">Sectors</a></li>
+                    <li class="dropdown">
+                        <a href="#" id="dropdownTrigger">Reviews ▾</a>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="sales-ai-course-review.html">Sales AI Course Review</a>
+                            <a href="zenbusiness-vs-northwest.html">ZenBusiness vs Northwest</a>
+                            <a href="wpengine-vs-kinsta.html">WP Engine vs Kinsta</a>
+                            <a href="neuro-serge-review.html">Neuro Serge Review</a>
+                            <a href="prodentim-review.html">ProDentim Review</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#about">Research</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
         <a href="index.html" class="back-link">← Back to Overview</a>
 
@@ -319,6 +482,38 @@
                     }
                 });
             }
+        });
+    </script>
+    <!-- Mobile Navigation Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var menuToggle = document.getElementById('menuToggle');
+            var navbar = document.getElementById('navbar');
+            var dropdownTrigger = document.getElementById('dropdownTrigger');
+            var dropdownMenu = document.getElementById('dropdownMenu');
+
+            // Toggle Mobile Drawer
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navbar.classList.toggle('open');
+                menuToggle.textContent = navbar.classList.contains('open') ? '✕' : '☰';
+            });
+
+            // Toggle Dropdown inside Drawer
+            dropdownTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var isDisplayed = dropdownMenu.style.display === 'flex';
+                dropdownMenu.style.display = isDisplayed ? 'none' : 'flex';
+            });
+
+            // Close menu if clicking outside
+            document.addEventListener('click', function(e) {
+                if (!navbar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navbar.classList.remove('open');
+                    menuToggle.textContent = '☰';
+                }
+            });
         });
     </script>
 </body>

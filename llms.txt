@@ -5,9 +5,11 @@ Sovereign System provides independent, data-driven systems research, architectur
 ## Core Verticals
 - **Enterprise Infrastructure:** High-availability hosting, container isolation, cloud databases.
 - **Legal & Compliance:** LLC formation networks, address privacy, corporate compliance automation.
-- **Clinical Systems:** HIPAA-compliant architectures, clinical databases.
+- **Clinical Systems:** HIPAA-compliant architectures, clinical databases, oral probiotic and cognitive-health tracking formulations.
 
 ## Deployed Review Guides
 - [Sales AI Course Review](https://system.hive.baby/sales-ai-course-review.html): Technical review of AI-generated video spokesperson rendering pipelines and character consistency.
 - [ZenBusiness vs Northwest Registered Agent](https://system.hive.baby/zenbusiness-vs-northwest.html): Comparison audit of corporate compliance frameworks and address privacy controls.
 - [WP Engine vs Kinsta](https://system.hive.baby/wpengine-vs-kinsta.html): Managed WordPress hosting performance benchmark comparing container isolation and global TTFB.
+- [Neuro Serge Review](https://system.hive.baby/neuro-serge-review.html): Rigorous clinical systems audit of Neuro Serge, evaluating cognitive formulation purity, manufacturing compliance, and database tracking.
+- [ProDentim Review](https://system.hive.baby/prodentim-review.html): Clinical systems review of ProDentim dental probiotic viability, oral microbiome stabilization, and batch validation metrics.
