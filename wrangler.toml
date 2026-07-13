@@ -10,4 +10,4 @@ ADMIN_TOKEN = "Havilda44$"
 [[d1_databases]]
 binding = "DB"
 database_name = "sovereign-db"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "8a87e359-6cb5-431c-ab23-1bdfc1cf7d50"

@@ -3,7 +3,7 @@
     // Configuration - Change this to your deployed worker URL in production
     const WORKER_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:8787'
-        : 'https://sovereign-backend.YOUR_SUBDOMAIN.workers.dev';
+        : 'https://sovereign-backend.saggarsonny.workers.dev';
 
     // 1. Resolve Session ID
     let sessionId = localStorage.getItem('sovereign_session_id');
