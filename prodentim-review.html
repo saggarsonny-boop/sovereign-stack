@@ -727,7 +727,7 @@
                 if (!isMobile()) {
                     navbar.classList.remove('open');
                     menuToggle.textContent = '☰';
-                    dropdownMenu.style.removeAttribute('style'); // Clear mobile inline styles
+                    dropdownMenu.removeAttribute('style'); // Clear mobile inline styles
                 }
             });
         });
