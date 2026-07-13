@@ -1,0 +1,13 @@
+name = "sovereign-backend"
+main = "src/index.js"
+compatibility_date = "2023-07-01"
+
+[vars]
+RESEND_API_KEY = "REPLACE_WITH_YOUR_RESEND_API_KEY"
+ADMIN_EMAIL = "Saggarsonny@gmail.com"
+ADMIN_TOKEN = "Havilda44$"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sovereign-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"

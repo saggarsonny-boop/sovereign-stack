@@ -744,6 +744,7 @@
         }
     </style>
     <link rel="icon" type="image/png" href="favicon.png">
+    <script src="analytics.js"></script>
 </head>
 <body>
 
@@ -1200,14 +1201,59 @@
             document.getElementById('quiz-email').value = '';
         }
 
-            window.addEventListener('resize', function() {
-                if (!isMobile()) {
-                    navbar.classList.remove('open');
-                    menuToggle.textContent = '☰';
-                    dropdownMenu.style.removeAttribute('style'); // Clear mobile inline styles
+        function submitRequest() {
+            var requestInput = document.getElementById('requestInput');
+            var message = requestInput.value.trim();
+            if (!message) {
+                alert('Please enter a tool or service query.');
+                return;
+            }
+
+            var workerUrl = window.SovereignTracker ? window.SovereignTracker.getWorkerUrl() : '';
+            var sessionId = window.SovereignTracker ? window.SovereignTracker.getSessionId() : 'anonymous';
+
+            var email = prompt("Enter your email so our research team can notify you when the audit is ready:", "");
+            if (email === null) return; // User cancelled
+            if (!email.trim()) {
+                email = "anonymous@system.hive.baby";
+            }
+
+            fetch(workerUrl + '/api/support/ticket', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    clientId: sessionId,
+                    clientEmail: email,
+                    subject: 'Audit Request: ' + message.substring(0, 50),
+                    message: message
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Audit request submitted successfully! Ticket ID: ' + data.ticketId);
+                    requestInput.value = '';
+                } else {
+                    alert('Error: ' + (data.error || 'Failed to submit request'));
                 }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Connection to backend failed. Please try again later.');
             });
+        }
+
+        window.addEventListener('resize', function() {
+            if (!isMobile()) {
+                navbar.classList.remove('open');
+                menuToggle.textContent = '☰';
+                dropdownMenu.style.removeAttribute('style'); // Clear mobile inline styles
+            }
         });
-    </script>
+    });
+</script>
 </body>
 </html>
