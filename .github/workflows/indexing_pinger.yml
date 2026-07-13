@@ -1,0 +1,36 @@
+name: Weekly GEO Indexing & Freshness Pinger
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Runs every Monday at midnight UTC
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  ping-indexing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Update Sitemap and LLMs Freshness Timestamps
+        run: |
+          python update_freshness.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "Sovereign Auto-Pinger"
+          git config --global user.email "bot@system.hive.baby"
+          git add sitemap.xml llms.txt
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: Weekly SEO/GEO freshness timestamp refresh [skip ci]" && git push)
+
+      - name: Ping Search Engine Crawlers (IndexNow & Bing)
+        run: |
+          curl -I "https://www.bing.com/ping?sitemap=https://system.hive.baby/sitemap.xml"
+          curl -I "https://www.google.com/ping?sitemap=https://system.hive.baby/sitemap.xml"

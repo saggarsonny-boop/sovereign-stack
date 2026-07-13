@@ -490,6 +490,58 @@
             <h2>2. Agency Template Deployments</h2>
             <p>Rather than designing custom systems from scratch, the program includes pre-built templates for outreach, automated booking, and client contracts. This dramatically cuts setup latency and simplifies project deployments.</p>
 
+            
+            <!-- Interactive ROI Calculator Widget -->
+            <div class="calculator-section" style="background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.5rem; margin: 3rem 0; text-align: left;">
+                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #a5b4fc;">Cold Lead Recovery ROI Calculator</h3>
+                <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.5rem;">Estimate the recovered revenue from setting up an automated B2B SMS/email database revival system.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem;">Number of Dead Leads in Database</label>
+                        <input type="number" id="calc-leads-count" value="500" oninput="calculateAgencyROI()" style="width: 100%; background-color: var(--bg-base); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; color: var(--text-primary); font-size: 0.9rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem;">Average B2B Contract Value ($)</label>
+                        <input type="number" id="calc-deal-value" value="1200" oninput="calculateAgencyROI()" style="width: 100%; background-color: var(--bg-base); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; color: var(--text-primary); font-size: 0.9rem;">
+                    </div>
+                </div>
+
+                <div style="background-color: rgba(99, 102, 241, 0.05); border-radius: 8px; padding: 1.25rem; border: 1px dashed var(--accent);">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                        <span>Expected Lead Recovery Rate (2%):</span>
+                        <span id="res-deals-recovered" style="font-weight: 700;">10 Deals</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                        <span>Setup & Software Cost:</span>
+                        <span style="font-weight: 700; color: #ef4444;">$97.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 0.5rem;">
+                        <span>Total Recovered B2B Revenue:</span>
+                        <span id="res-recovered-rev" style="font-weight: 700; color: #10b981;">$12,000.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1rem; font-weight: 800;">
+                        <span>Expected ROI Multiple:</span>
+                        <span id="res-roi-mult" style="color: #6366f1;">123.7x ROI</span>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function calculateAgencyROI() {
+                    var leads = parseFloat(document.getElementById('calc-leads-count').value) || 0;
+                    var dealVal = parseFloat(document.getElementById('calc-deal-value').value) || 0;
+                    
+                    var deals = Math.max(1, Math.round(leads * 0.02)); // 2% conservative recovery rate
+                    var recoveredRev = deals * dealVal;
+                    var roiMult = recoveredRev / 97.0; // Assume $97 blueprint cost
+                    
+                    document.getElementById('res-deals-recovered').textContent = deals + ' Deals';
+                    document.getElementById('res-recovered-rev').textContent = '$' + recoveredRev.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    document.getElementById('res-roi-mult').textContent = roiMult.toFixed(1) + 'x ROI';
+                }
+            </script>
+
             <div class="cta-box">
                 <h3>Launch Your B2B Automation Stack</h3>
                 <p>Deploy the Instant AI Agency blueprint to unlock automated database client leads.</p>

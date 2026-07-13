@@ -654,6 +654,28 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        
+        .hero {
+            padding: 4rem 0 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 380px;
+            height: 380px;
+            background: url('logo.png') no-repeat center center;
+            background-size: contain;
+            opacity: 0.035; /* Faint glowing watermark logo */
+            pointer-events: none;
+            z-index: 0;
+        }
+
         /* Request Audit Box Styles */
         .request-section {
             background-color: var(--bg-surface);
@@ -768,24 +790,60 @@
         </div>
     
             <!-- Interactive System Configurator Widget -->
-            <div class="configurator-section" id="configurator">
-                <h3 class="config-title">Systems Recommendation Engine</h3>
-                <p class="config-desc">Select your primary operational bottleneck to output the optimized, audited stack recommendation.</p>
-                                                <div class="config-options">
-                    <button class="config-opt-btn" onclick="showConfig('video')">Video Content Scaling</button>
-                    <button class="config-opt-btn" onclick="showConfig('aiagency')">AI Agency Systems</button>
-                    <button class="config-opt-btn" onclick="showConfig('cognitive')">Brain & Focus Systems</button>
-                    <button class="config-opt-btn" onclick="showConfig('oral')">Oral Probiotic Systems</button>
-                    <button class="config-opt-btn" onclick="showConfig('mobility')">Joint Mobility Systems</button>
-                    <button class="config-opt-btn" onclick="showConfig('hearing')">Auditory & Hearing Systems</button>
-                    <button class="config-opt-btn" onclick="showConfig('purification')">Liver Purification Systems</button>
-                    <button class="config-opt-btn" onclick="showConfig('metabolic')">Metabolic Coffee Synergy</button>
-                    <button class="config-opt-btn" onclick="showConfig('javabrain')">Nootropic Coffee Synergy</button>
+            <div class="configurator-section" id="configurator" style="position: relative; z-index: 1;">
+                <h3 class="config-title">Systems Diagnostic Engine</h3>
+                <p class="config-desc" id="quiz-subtitle">Run the 3-step sovereign diagnostics wizard to identify your optimal system stack.</p>
+                
+                <!-- Step 1: Niche Selection -->
+                <div id="step-1" class="quiz-step">
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Step 1: Select Your Optimization Vertical</p>
+                    <div class="config-options">
+                        <button class="config-opt-btn" onclick="quizSelectVertical('infra')">Enterprise Infrastructure (B2B/Automation)</button>
+                        <button class="config-opt-btn" onclick="quizSelectVertical('clinical')">Clinical Systems (Health/Microbiome)</button>
+                    </div>
                 </div>
-                <div class="config-result" id="configResult">
-                    <h4 id="resultTitle" style="font-weight:700; margin-bottom:0.5rem; color:#a5b4fc;"></h4>
-                    <p id="resultText" style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;"></p>
-                    <a id="resultLink" href="#" class="btn" style="display:inline-block; width:auto; padding:0.6rem 1.2rem;">View Audit Details →</a>
+
+                <!-- Step 2: Bottleneck Selection (Infra) -->
+                <div id="step-2-infra" class="quiz-step" style="display: none;">
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Step 2: Define your core business operational bottleneck</p>
+                    <div class="config-options">
+                        <button class="config-opt-btn" onclick="quizSelectNiche('salesai')">Scaling video ad creative & consistent AI spokespersons</button>
+                        <button class="config-opt-btn" onclick="quizSelectNiche('aiagency')">B2B client acquisition & automated database lead revival</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Bottleneck Selection (Clinical) -->
+                <div id="step-2-clinical" class="quiz-step" style="display: none;">
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Step 2: Define your primary clinical/biological focus area</p>
+                    <div class="config-options">
+                        <button class="config-opt-btn" onclick="quizSelectNiche('cognitive')">Nootropics & focus acceleration</button>
+                        <button class="config-opt-btn" onclick="quizSelectNiche('oral')">Oral microbiome & dental hygiene</button>
+                        <button class="config-opt-btn" onclick="quizSelectNiche('mobility')">Joint mobility & synovial fluid</button>
+                        <button class="config-opt-btn" onclick="quizSelectNiche('hearing')">Auditory pathway health & ear ringing</button>
+                        <button class="config-opt-btn" onclick="quizSelectNiche('metabolic')">Liver detoxification & metabolic fat burning</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Lead Capture & Recommendation Card -->
+                <div id="step-3" class="quiz-step" style="display: none;">
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Step 3: Access Audited Solution Recommendation</p>
+                    <div style="background-color: rgba(99, 102, 241, 0.06); border: 1px dashed var(--accent); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <h4 id="quiz-result-title" style="font-weight:700; margin-bottom:0.5rem; color:#a5b4fc; font-size:1.15rem;"></h4>
+                        <p id="quiz-result-desc" style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1.5rem; line-height: 1.5;"></p>
+                        
+                        <!-- Lead capture input (optional) -->
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem; max-width: 400px; margin-bottom: 1.5rem;">
+                            <label for="quiz-email" style="font-size:0.8rem; font-weight:600; color:var(--text-muted); text-align:left;">Optional: Enter email to subscribe to Weekly Systems Audits</label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="email" id="quiz-email" placeholder="you@example.com" style="flex-grow:1; background-color:var(--bg-base); border:1px solid var(--border); border-radius:6px; padding:0.5rem 0.75rem; color:var(--text-primary); font-size:0.85rem;">
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a id="quiz-result-link" href="#" class="btn" style="display:inline-block; width:auto; padding:0.6rem 1.5rem;">Access Audit Report →</a>
+                            <button onclick="resetQuiz()" class="config-opt-btn" style="margin-bottom:0;">Start Over</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1061,6 +1119,87 @@
             });
 
             // Reset inline styles on window resize
+            
+        // Multi-Step Systems Quiz Logic
+        var quizData = {
+            vertical: '',
+            niche: ''
+        };
+
+        const quizRecommendations = {
+            "salesai": {
+                title: "Recommended Stack: Sales AI Course",
+                desc: "Optimized for automated video spokesperson creation, pre-compiled rendering workflows, and character consistency mapping.",
+                link: "sales-ai-course-review.html"
+            },
+            "aiagency": {
+                title: "Recommended Stack: Instant AI Agency",
+                desc: "Optimized for B2B client acquisition blueprints, CRM database lead revival sequences, and automated SMS appointment bookings.",
+                link: "instant-ai-agency-review.html"
+            },
+            "cognitive": {
+                title: "Recommended Stack: Neuro Serge / Java Brain Synergy",
+                desc: "Clinical nootropic configurations designed to stabilize cognitive focus and brain pathway speed without stimulant crashes.",
+                link: "neuro-serge-review.html"
+            },
+            "oral": {
+                title: "Recommended Stack: ProDentim Oral Probiotics",
+                desc: "Stabilizes oral microflora populations using a high-density 3.5 billion CFU freeze-dried probiotic delivery format.",
+                link: "prodentim-review.html"
+            },
+            "mobility": {
+                title: "Recommended Stack: Joint Genesis Clinical",
+                desc: "Targeted support for synovial fluid rehydration and cartilage friction reduction using premium joint hyaluronan.",
+                link: "joint-genesis-review.html"
+            },
+            "hearing": {
+                title: "Recommended Stack: NeuroQuiet Shielding",
+                desc: "Shields auditory nerve pathways, calms brain ringing, and stabilizes auditory sensory response times.",
+                link: "neuroquiet-review.html"
+            },
+            "metabolic": {
+                title: "Recommended Stack: Liv Pure / Java Burn Metabolism Synergy",
+                desc: "Leverages liver purification complexes and BMR-accelerating coffee synergy to optimize metabolic speed indices.",
+                link: "liv-pure-review.html"
+            }
+        };
+
+        function quizSelectVertical(verticalVal) {
+            quizData.vertical = verticalVal;
+            document.getElementById('step-1').style.display = 'none';
+            if (verticalVal === 'infra') {
+                document.getElementById('step-2-infra').style.display = 'block';
+            } else {
+                document.getElementById('step-2-clinical').style.display = 'block';
+            }
+        }
+
+        function quizSelectNiche(nicheVal) {
+            quizData.niche = nicheVal;
+            document.getElementById('step-2-infra').style.display = 'none';
+            document.getElementById('step-2-clinical').style.display = 'none';
+            
+            // Render the recommendation card
+            var rec = quizRecommendations[nicheVal];
+            if (rec) {
+                document.getElementById('quiz-result-title').textContent = rec.title;
+                document.getElementById('quiz-result-desc').textContent = rec.desc;
+                document.getElementById('quiz-result-link').href = rec.link;
+            }
+            
+            document.getElementById('step-3').style.display = 'block';
+        }
+
+        function resetQuiz() {
+            quizData.vertical = '';
+            quizData.niche = '';
+            document.getElementById('step-3').style.display = 'none';
+            document.getElementById('step-2-infra').style.display = 'none';
+            document.getElementById('step-2-clinical').style.display = 'none';
+            document.getElementById('step-1').style.display = 'block';
+            document.getElementById('quiz-email').value = '';
+        }
+
             window.addEventListener('resize', function() {
                 if (!isMobile()) {
                     navbar.classList.remove('open');

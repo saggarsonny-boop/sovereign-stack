@@ -611,6 +611,59 @@
             <h2>2. Character Consistency Across Variations</h2>
             <p>The main challenge of AI-generated video is temporal consistency (keeping facial features identical from scene to scene). The course breaks down advanced masking and model-merging techniques that ensure the generated character retains identical features across different camera angles and lighting styles.</p>
 
+            
+            <!-- Interactive ROI Calculator Widget -->
+            <div class="calculator-section" style="background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.5rem; margin: 3rem 0; text-align: left;">
+                <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 0.5rem; color: #a5b4fc;">Automated Spokesperson ROI Calculator</h3>
+                <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.5rem;">Estimate the monthly cost savings of replacing traditional studio recording with automated cloud AI spokesperson rendering.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem;">Traditional Production Cost ($ per video)</label>
+                        <input type="number" id="calc-video-cost" value="350" oninput="calculateSalesROI()" style="width: 100%; background-color: var(--bg-base); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; color: var(--text-primary); font-size: 0.9rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem;">Video Variations Needed per Month</label>
+                        <input type="number" id="calc-video-volume" value="10" oninput="calculateSalesROI()" style="width: 100%; background-color: var(--bg-base); border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem; color: var(--text-primary); font-size: 0.9rem;">
+                    </div>
+                </div>
+
+                <div style="background-color: rgba(99, 102, 241, 0.05); border-radius: 8px; padding: 1.25rem; border: 1px dashed var(--accent);">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                        <span>Traditional Video Cost:</span>
+                        <span id="res-trad-cost" style="font-weight: 700;">$3,500.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                        <span>AI Video Cost (Cloud Render):</span>
+                        <span style="font-weight: 700; color: #10b981;">$50.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 0.5rem;">
+                        <span>Net Monthly Savings:</span>
+                        <span id="res-savings-mo" style="font-weight: 700; color: #a5b4fc;">$3,450.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 1rem; font-weight: 800;">
+                        <span>Net Annual Savings:</span>
+                        <span id="res-savings-yr" style="color: #6366f1;">$41,400.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function calculateSalesROI() {
+                    var perVideo = parseFloat(document.getElementById('calc-video-cost').value) || 0;
+                    var volume = parseFloat(document.getElementById('calc-video-volume').value) || 0;
+                    
+                    var tradTotal = perVideo * volume;
+                    var aiTotal = 5.0 * volume; // Assume $5 cloud rendering cost per video variation
+                    var savingsMo = tradTotal - aiTotal;
+                    var savingsYr = savingsMo * 12;
+                    
+                    document.getElementById('res-trad-cost').textContent = '$' + tradTotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    document.getElementById('res-savings-mo').textContent = '$' + savingsMo.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    document.getElementById('res-savings-yr').textContent = '$' + savingsYr.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                }
+            </script>
+
             <div class="cta-box">
                 <h3>Deploy the Sales AI Spokesperson Workflow</h3>
                 <p>Automate your video production pipeline and build consistent AI marketing characters now.</p>
