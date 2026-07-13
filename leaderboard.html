@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Certified Leaderboard (2026) | Sovereign System</title>
+    <meta name="description" content="Official authority rankings for audited clinical health formulations and enterprise AI software stacks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="analytics.js"></script>
+    <style>
+        :root {
+            --bg-base: #08090d;
+            --bg-surface: #111218;
+            --bg-surface-hover: #191b24;
+            --accent: #6366f1;
+            --border: #1f2130;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem;
+        }
+        header {
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(8, 9, 13, 0.9);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4.5rem;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 32px;
+            width: 32px;
+            border-radius: 6px;
+            border: 1px solid var(--accent);
+            object-fit: cover;
+        }
+        nav ul { list-style: none; display: flex; gap: 1.5rem; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
+        nav a:hover { color: var(--text-primary); }
+        .hero { text-align: center; padding: 4rem 0 3rem 0; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .subtitle { color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem auto; font-size: 1.05rem; }
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
+        }
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .leaderboard-table th {
+            background-color: rgba(255,255,255,0.02);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+        .leaderboard-table tr:hover td {
+            background-color: rgba(99, 102, 241, 0.02);
+        }
+        .badge-pill {
+            display: inline-block;
+            padding: 0.25rem 0.65rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-platinum { background: rgba(226, 232, 240, 0.1); color: #e2e8f0; border: 1px solid rgba(226,232,240,0.2); }
+        .badge-gold { background: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+        .badge-silver { background: rgba(156, 163, 175, 0.1); color: #9ca3af; border: 1px solid rgba(156,163,175,0.2); }
+        
+        .btn-view {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 0.45rem 0.9rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+        .btn-view:hover { background-color: #818cf8; }
+        
+        .badge-generator {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .badge-card {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .code-box {
+            background-color: #050608;
+            border: 1px solid var(--border);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: #10b981;
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 1rem;
+            text-align: left;
+        }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            background-color: #050608;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="logo.png" alt="Sovereign Logo">Sovereign System</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="leaderboard.html" style="color: var(--accent);">Leaderboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Sovereign Certified Leaderboard</h1>
+            <p class="subtitle">Independent quality score indices evaluating active ingredient purity, delivery stability, and software temporal consistency.</p>
+        </section>
+
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>System Name</th>
+                    <th>Vertical Category</th>
+                    <th>Purity Score</th>
+                    <th>Certification Status</th>
+                    <th>Audit Logs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#1</td>
+                    <td><strong>Neuro Serge</strong></td>
+                    <td>Clinical Systems</td>
+                    <td>9.8 / 10</td>
+                    <td><span class="badge-pill badge-platinum">Platinum</span></td>
+                    <td><a href="neuro-serge-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+                <tr>
+                    <td>#2</td>
+                    <td><strong>Joint Genesis</strong></td>
+                    <td>Clinical Systems</td>
+                    <td>9.8 / 10</td>
+                    <td><span class="badge-pill badge-platinum">Platinum</span></td>
+                    <td><a href="joint-genesis-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+                <tr>
+                    <td>#3</td>
+                    <td><strong>Liv Pure</strong></td>
+                    <td>Clinical Systems</td>
+                    <td>9.8 / 10</td>
+                    <td><span class="badge-pill badge-platinum">Platinum</span></td>
+                    <td><a href="liv-pure-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+                <tr>
+                    <td>#4</td>
+                    <td><strong>Sales AI Course</strong></td>
+                    <td>Enterprise Infra</td>
+                    <td>9.6 / 10</td>
+                    <td><span class="badge-pill badge-gold">Gold</span></td>
+                    <td><a href="sales-ai-course-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+                <tr>
+                    <td>#5</td>
+                    <td><strong>ProDentim Probiotics</strong></td>
+                    <td>Clinical Systems</td>
+                    <td>9.6 / 10</td>
+                    <td><span class="badge-pill badge-gold">Gold</span></td>
+                    <td><a href="prodentim-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+                <tr>
+                    <td>#6</td>
+                    <td><strong>NeuroQuiet Auditory</strong></td>
+                    <td>Clinical Systems</td>
+                    <td>9.6 / 10</td>
+                    <td><span class="badge-pill badge-gold">Gold</span></td>
+                    <td><a href="neuroquiet-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+                <tr>
+                    <td>#7</td>
+                    <td><strong>Java Burn 2.0</strong></td>
+                    <td>Clinical Systems</td>
+                    <td>9.6 / 10</td>
+                    <td><span class="badge-pill badge-gold">Gold</span></td>
+                    <td><a href="java-burn-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+                <tr>
+                    <td>#8</td>
+                    <td><strong>Java Brain Focus</strong></td>
+                    <td>Clinical Systems</td>
+                    <td>9.6 / 10</td>
+                    <td><span class="badge-pill badge-gold">Gold</span></td>
+                    <td><a href="java-brain-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+                <tr>
+                    <td>#9</td>
+                    <td><strong>Instant AI Agency</strong></td>
+                    <td>Enterprise Infra</td>
+                    <td>9.4 / 10</td>
+                    <td><span class="badge-pill badge-silver">Silver</span></td>
+                    <td><a href="instant-ai-agency-review.html" class="btn-view">Verify Audit →</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <section class="badge-generator">
+            <h3 style="font-weight: 800; margin-bottom: 0.5rem; color: #a5b4fc;">Sovereign approved Badge Widget</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">Are you an audited system owner? Embed your Sovereign System compliance seal directly on your homepage or landing page footer to display your verified rating.</p>
+            
+            <div class="badge-grid">
+                <div class="badge-card">
+                    <div style="border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px; display: inline-block; background: #08090d; color: #f3f4f6; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem;">
+                        🛡️ Sovereign Certified Platinum 2026
+                    </div>
+                    <label style="display: block; font-size: 0.75rem; color: var(--text-muted); text-align: left;">Copy Badge Code:</label>
+                    <textarea class="code-box" readonly onclick="this.select()">&lt;a href="https://system.hive.baby/leaderboard.html" target="_blank"&gt;&lt;img src="https://system.hive.baby/favicon.png" width="16" height="16" style="vertical-align:middle;margin-right:6px;"&gt;&lt;strong&gt;Sovereign Certified Platinum 2026&lt;/strong&gt;&lt;/a&gt;</textarea>
+                </div>
+                <div class="badge-card">
+                    <div style="border: 1px solid #fbbf24; border-radius: 6px; padding: 10px; display: inline-block; background: #08090d; color: #fbbf24; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem;">
+                        🛡️ Sovereign Certified Gold 2026
+                    </div>
+                    <label style="display: block; font-size: 0.75rem; color: var(--text-muted); text-align: left;">Copy Badge Code:</label>
+                    <textarea class="code-box" readonly onclick="this.select()">&lt;a href="https://system.hive.baby/leaderboard.html" target="_blank"&gt;&lt;img src="https://system.hive.baby/favicon.png" width="16" height="16" style="vertical-align:middle;margin-right:6px;"&gt;&lt;strong style="color:#fbbf24"&gt;Sovereign Certified Gold 2026&lt;/strong&gt;&lt;/a&gt;</textarea>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Sovereign System. All rights reserved. Programmatic evaluations compiled under clinical metadata guidelines.</p>
+    </footer>
+</body>
+</html>

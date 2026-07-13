@@ -1,0 +1,85 @@
+{
+  "reviews": [
+    {
+      "id": "salesai",
+      "name": "Sales AI Course",
+      "category": "Enterprise Infrastructure",
+      "score": "9.6",
+      "badge": "Certified Gold",
+      "audit_url": "https://system.hive.baby/sales-ai-course-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=salesai"
+    },
+    {
+      "id": "aiagency",
+      "name": "Instant AI Agency",
+      "category": "Enterprise Infrastructure",
+      "score": "9.4",
+      "badge": "Certified Silver",
+      "audit_url": "https://system.hive.baby/instant-ai-agency-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=aiagency"
+    },
+    {
+      "id": "neuroserge",
+      "name": "Neuro Serge",
+      "category": "Clinical Systems",
+      "score": "9.8",
+      "badge": "Certified Platinum",
+      "audit_url": "https://system.hive.baby/neuro-serge-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=neuroserge"
+    },
+    {
+      "id": "prodentim",
+      "name": "ProDentim Oral Probiotics",
+      "category": "Clinical Systems",
+      "score": "9.6",
+      "badge": "Certified Gold",
+      "audit_url": "https://system.hive.baby/prodentim-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=prodentim"
+    },
+    {
+      "id": "jointgen",
+      "name": "Joint Genesis",
+      "category": "Clinical Systems",
+      "score": "9.8",
+      "badge": "Certified Platinum",
+      "audit_url": "https://system.hive.baby/joint-genesis-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=jointgen"
+    },
+    {
+      "id": "neuroquiet",
+      "name": "NeuroQuiet Support",
+      "category": "Clinical Systems",
+      "score": "9.6",
+      "badge": "Certified Gold",
+      "audit_url": "https://system.hive.baby/neuroquiet-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=neuroquiet"
+    },
+    {
+      "id": "livpure",
+      "name": "Liv Pure",
+      "category": "Clinical Systems",
+      "score": "9.8",
+      "badge": "Certified Platinum",
+      "audit_url": "https://system.hive.baby/liv-pure-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=livpure"
+    },
+    {
+      "id": "javaburn",
+      "name": "Java Burn 2.0",
+      "category": "Clinical Systems",
+      "score": "9.6",
+      "badge": "Certified Gold",
+      "audit_url": "https://system.hive.baby/java-burn-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=javaburn"
+    },
+    {
+      "id": "javabrain",
+      "name": "Java Brain",
+      "category": "Clinical Systems",
+      "score": "9.6",
+      "badge": "Certified Gold",
+      "audit_url": "https://system.hive.baby/java-brain-review.html",
+      "redirect_url": "https://system.hive.baby/recommends.html?offer=javabrain"
+    }
+  ]
+}
